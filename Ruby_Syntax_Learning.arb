@@ -1,0 +1,128 @@
+
+#Initial Test document, learning basic Ruby usage, scripting
+
+test1 = 2
+
+puts test1.inspect
+
+test1 **= 2
+
+puts test1
+print "Hello World"; print "I love drinking coffee\n"
+puts "Hello World"; puts "I love drinking coffee"
+
+
+
+#test2 = gets.chomp
+#put test2
+
+if test1 > 6
+    puts "test1 > 6"
+else
+    puts "test1 <= 6"
+end
+
+test3 = 2
+test3 += 2
+
+
+puts test1.equal?test3 #pointer comparison, for numbers = true due to optimization
+
+test1 = "hello"
+test3 = "hello"
+puts test1.equal?test3
+
+puts 3 <=> 3 #"spaceship operator", returns -1, 0, 1 by larger value
+
+
+response = 2 < 3 ? "2 < 3 = true" : " 2 < 3 = false"
+puts response
+
+i=0
+#loop do
+while i < 6 do  #loop to 5
+    i+=1
+end
+puts "i = #{i}"
+
+i=0
+until i >= 4 do  #Loop to 3
+    i+=1
+    #break if i == 5
+end
+puts "i = #{i}"
+
+
+for j in ('a'..'e') # 1..5 #for 1-5
+    puts "for loop: j = #{j}"
+end
+
+
+#dictionary/map
+hash = Hash.new
+hash = {
+    #"a" => 1,
+    #"b" => 2
+    :a => 1,
+    :b => 2
+
+    #a:  1, ... ; still access with hash[:a]
+}
+hash[:c] = 500
+hash.delete(:c)
+puts hash.fetch(:b, -1)
+puts hash.fetch(:c, -1)
+#hash["b"]
+#hash["no"] # = nil
+#hash.fetch("no", "default value") # gives a keyerror w/o default
+
+
+def greet(name)
+    "Hello, " + name + "!" #implicit returns
+    #return ^ also works
+end
+puts greet("Morgan")
+
+def even_odd(number)
+    unless number.is_a? Numeric
+        return "not a number"
+    end
+
+    if number % 2 == 0
+        "even"
+    else
+        "odd"
+    end
+end
+puts even_odd("blarg")
+
+# puts 5.even? # predicate methods end w/ "?"", return true/false
+
+array = [5,3,2,5]
+array.each do |num|
+    num **= 2
+    puts "squared array value = #{num}"
+end
+
+
+my_hash = Hash.new(100) #sets default value to 100
+puts my_hash["cc"]
+my_hash = { "aa" => 1, "bb" => 2}
+puts my_hash["cc"]
+my_hash.each { |key, value| puts "#{key} hash to #{value}" }
+my_hash.each { |pair| puts "pair hash to #{pair} aka #{pair[1]} and #{pair[0]}" }
+
+array = ["a", "b", "c", "d"]
+array.each_with_index { |fruit, index| puts fruit if index.even?}
+
+my_numbers = [5, 6, 7, 8]
+#sum = 0
+puts my_numbers.reduce(1000) { |sum, number| sum + number } # .reduce(1000) for 1026
+#puts sum
+
+puts array.select { |value| value < "c"}
+
+
+
+
+puts "end"
