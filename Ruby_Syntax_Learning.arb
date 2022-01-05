@@ -1,5 +1,6 @@
 
 #Initial Test document, learning basic Ruby usage, scripting
+#Made while reading through https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-programming
 
 test1 = 2
 

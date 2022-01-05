@@ -1,0 +1,142 @@
+
+
+# Offset letters in original_string along the alphabet by the given offset.
+# Return the resulting string
+def caesar_cipher(original_string, offset)
+
+    #hash/array? index + offset = new char
+    #Both capitalized and lowercase? (Or both entry types in hash?)
+    letter_hash = ('a'..'z').zip(0..25).to_h
+    #capital_letter_hash = ('A'..'Z').zip(1..26).to_h
+    
+    #letter_hash = letter_hash.merge(('A'..'Z').zip(1..26).to_h)
+    letter_hash = (('a'..'z').to_a + ('A'..'Z').to_a)
+                    .zip((0..25).to_a + (0..25).to_a)
+                    .to_h
+    number_hash = (0..25).to_a
+    
+    #capital_letter_hash = ('A'..'Z').zip(1..26).to_h
+    
+    result_string = ""
+    original_string.split('').each do |letter|
+        if letter_hash.key?(letter)
+            #letter, offset in result_string
+            new_index = (letter_hash[letter] + offset.to_i) % 26
+            new_letter = letter_hash.key(new_index) #returns first value found, here lower case
+
+            #corrrect for uppercase
+            if letter == letter.upcase
+                new_letter = new_letter.upcase
+            end
+            
+            result_string += new_letter
+            
+        else
+            #not a letter, copy directly
+            result_string += letter
+        end
+    end
+
+    #implicit return.
+    result_string
+end
+
+
+# Run the given test case
+def test_caesar_cipher(test_string, expected_string, offset)
+
+    puts "Test case: " + test_string.to_s +
+            ", expecting " + expected_string.to_s + ", offset by " + offset.to_s
+
+    result_string = caesar_cipher(test_string, offset)
+    if result_string == expected_string
+        puts "  PASS"
+        return 0
+    else
+        puts "  FAIL; returned: " + result_string
+        return 1
+    end
+end
+
+
+
+tests_suite = Hash.new
+
+#capitals/lowercases
+tests_suite["Capitals and lowercases"] = {
+    test_string: ("a".."z").to_a.join + ("A".."Z").to_a.join,
+    expected_string: "bcdefghijklmnopqrstuvwxyzaBCDEFGHIJKLMNOPQRSTUVWXYZA",
+    offset: 1}
+
+
+#non-letters
+tests_suite["Miexd-in non-letters"] = {
+    test_string: "!a123ZZZ",
+    expected_string: "!b123AAA",
+    offset: 1}
+tests_suite["Only non-letters"] = {
+    test_string: ".@#$%$%///",
+    expected_string: ".@#$%$%///",
+    offset: 1}
+
+
+#Offset amounts (range of atleast -39 to 39, 39=26+13)
+#(-40..40).each do |number|
+tests_suite["Offset test +3"] = {
+    test_string: "abcDEF",
+    expected_string: "defGHI",
+    offset: 3
+}
+tests_suite["Offset test -3"] = {
+    test_string: "defGHI",
+    expected_string: "abcDEF",
+    offset: -3
+}
+tests_suite["Offset test +0"] = {
+    test_string: "abcDEF",
+    expected_string: "abcDEF",
+    offset: 0
+}
+tests_suite["Offset test +26"] = {
+    test_string: "abcDEF",
+    expected_string: "abcDEF",
+    offset: +26
+}
+tests_suite["Offset test -26"] = {
+    test_string: "abcDEF",
+    expected_string: "abcDEF",
+    offset: -26
+}
+tests_suite["Offset test +30"] = {
+    test_string: "abcDEF",
+    expected_string: "efgHIJ",
+    offset: 30
+}
+tests_suite["Offset test -30"] = {
+    test_string: "abcDEF",
+    expected_string: "wxyZAB",
+    offset: -30
+}
+
+
+
+#Run tests
+failed_test_count = 0
+failed_tests = []
+tests_suite.each do |test_name, test|
+
+    test_result = test_caesar_cipher(test[:test_string], 
+                                    test[:expected_string],
+                                    test[:offset])
+
+    failed_test_count += test_result
+    if test_result > 0
+        failed_tests.push(test_name)
+    end
+
+end
+puts "\n" + failed_test_count.to_s + " tests failed."
+puts failed_tests
+
+
+
