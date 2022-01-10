@@ -123,6 +123,47 @@ puts my_numbers.reduce(1000) { |sum, number| sum + number } # .reduce(1000) for 
 
 puts array.select { |value| value < "c"}
 
+puts "Testing objects"
+
+class TestObject
+    @@total_indices = 0
+
+    def initialize(initial_values)
+        @values = initial_values.to_a
+        @@total_indices += initial_values.length
+    end
+
+    def push(value)
+        @values.push(value)
+        @@total_indices += 1
+    end
+
+    def get_index_value(index)
+        @values[index]
+    end
+
+    def get_total_indices()
+        @@total_indices
+    end
+end
+
+test1 = TestObject.new([1,2,3])
+test2 = TestObject.new((5..12).to_a)
+
+puts test2.get_total_indices()
+
+puts test1.get_index_value(1)
+test1.push(4)
+puts test1.get_index_value(3)
+
+
+puts test2.get_total_indices()
+
+
+
+
+
+
 
 
 

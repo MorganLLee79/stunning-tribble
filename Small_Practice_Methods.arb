@@ -70,7 +70,7 @@ tests_suite["Capitals and lowercases"] = {
 
 
 #non-letters
-tests_suite["Miexd-in non-letters"] = {
+tests_suite["Mixed-in non-letters"] = {
     test_string: "!a123ZZZ",
     expected_string: "!b123AAA",
     offset: 1}
@@ -140,3 +140,28 @@ puts failed_tests
 
 
 
+#RSpec testing
+=begin
+
+#describe Class do
+describe #caesar_cipher do
+    it "testing capitals and lower cases" do
+        #set up, classes
+
+        expect(caesar_cipher("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", 1)).to
+            eql("bcdefghijklmnopqrstuvwxyzaBCDEFGHIJKLMNOPQRSTUVWXYZA")
+    end #test set level
+
+    it "test" do
+        expect( method(param1, param2) ).not_to eql(wrong answer)
+        #1 expect clause per test case
+    end
+
+end #Method level
+#end #class level
+
+=end
+_suite["Capitals and lowercases"] = {
+    test_string: ("a".."z").to_a.join + ("A".."Z").to_a.join,
+    expected_string: "bcdefghijklmnopqrstuvwxyzaBCDEFGHIJKLMNOPQRSTUVWXYZA",
+    offset: 1}
