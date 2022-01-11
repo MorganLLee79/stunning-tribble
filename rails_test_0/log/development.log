@@ -1,0 +1,105 @@
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateCars (20220110232650)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "cars" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "make" varchar, "model" varchar, "year" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220110232650"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-01-10 23:26:59.228132"], ["updated_at", "2022-01-10 23:26:59.228132"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/cars" for ::1 at 2022-01-10 18:28:02 -0500
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CarsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cars/index.html.erb within layouts/application
+  [1m[36mCar Load (0.2ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  ↳ app/views/cars/index.html.erb:6
+  Rendered cars/index.html.erb within layouts/application (Duration: 20.7ms | Allocations: 1793)
+  Rendered layout layouts/application.html.erb (Duration: 344.1ms | Allocations: 87195)
+Completed 200 OK in 380ms (Views: 356.8ms | ActiveRecord: 0.2ms | Allocations: 94997)
+
+
+Started GET "/cars" for ::1 at 2022-01-10 18:35:19 -0500
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (3.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CarsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cars/index.html.erb within layouts/application
+  [1m[36mCar Load (0.4ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  ↳ app/views/cars/index.html.erb:6
+  Rendered cars/index.html.erb within layouts/application (Duration: 19.2ms | Allocations: 1688)
+  Rendered layout layouts/application.html.erb (Duration: 130.1ms | Allocations: 35640)
+Completed 200 OK in 157ms (Views: 138.6ms | ActiveRecord: 0.4ms | Allocations: 42237)
+
+
+Started GET "/cars/new" for ::1 at 2022-01-10 18:35:22 -0500
+Processing by CarsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cars/new.html.erb within layouts/application
+  Rendered cars/_form.html.erb (Duration: 19.4ms | Allocations: 5763)
+  Rendered cars/new.html.erb within layouts/application (Duration: 20.9ms | Allocations: 6137)
+  Rendered layout layouts/application.html.erb (Duration: 23.1ms | Allocations: 8301)
+Completed 200 OK in 39ms (Views: 23.7ms | ActiveRecord: 0.5ms | Allocations: 13901)
+
+
+Started POST "/cars" for ::1 at 2022-01-10 18:35:27 -0500
+Processing by CarsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "car"=>{"make"=>"test", "model"=>"test1", "year"=>"1212"}, "commit"=>"Create Car"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/cars_controller.rb:27:in `block in create'
+  [1m[36mCar Create (0.4ms)[0m  [1m[32mINSERT INTO "cars" ("make", "model", "year", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["make", "test"], ["model", "test1"], ["year", 1212], ["created_at", "2022-01-10 23:35:27.744238"], ["updated_at", "2022-01-10 23:35:27.744238"]]
+  ↳ app/controllers/cars_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (10.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/cars_controller.rb:27:in `block in create'
+Redirected to http://localhost:3000/cars/1
+Completed 302 Found in 18ms (ActiveRecord: 11.1ms | Allocations: 3887)
+
+
+Started GET "/cars/1" for ::1 at 2022-01-10 18:35:27 -0500
+Processing by CarsController#show as TURBO_STREAM
+  Parameters: {"id"=>"1"}
+  [1m[36mCar Load (0.3ms)[0m  [1m[34mSELECT "cars".* FROM "cars" WHERE "cars"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cars_controller.rb:63:in `set_car'
+  Rendering layout layouts/application.html.erb
+  Rendering cars/show.html.erb within layouts/application
+  Rendered cars/_car.html.erb (Duration: 1.1ms | Allocations: 280)
+  Rendered cars/show.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1646)
+  Rendered layout layouts/application.html.erb (Duration: 7.5ms | Allocations: 3793)
+Completed 200 OK in 17ms (Views: 8.2ms | ActiveRecord: 0.3ms | Allocations: 6906)
+
+
+Started GET "/cars/1" for ::1 at 2022-01-10 18:35:48 -0500
+Processing by CarsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCar Load (0.1ms)[0m  [1m[34mSELECT "cars".* FROM "cars" WHERE "cars"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cars_controller.rb:63:in `set_car'
+  Rendering layout layouts/application.html.erb
+  Rendering cars/show.html.erb within layouts/application
+  Rendered cars/_car.html.erb (Duration: 0.1ms | Allocations: 25)
+  Rendered cars/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 539)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 2580)
+Completed 200 OK in 7ms (Views: 5.6ms | ActiveRecord: 0.1ms | Allocations: 3490)
+
+
+Started GET "/cars" for 10.0.2.2 at 2022-01-10 18:48:28 -0500
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CarsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cars/index.html.erb within layouts/application
+  [1m[36mCar Load (0.2ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  ↳ app/views/cars/index.html.erb:6
+  Rendered cars/_car.html.erb (Duration: 8.1ms | Allocations: 309)
+  Rendered cars/index.html.erb within layouts/application (Duration: 27.2ms | Allocations: 7610)
+  Rendered layout layouts/application.html.erb (Duration: 77.4ms | Allocations: 41636)
+Completed 200 OK in 102ms (Views: 83.5ms | ActiveRecord: 0.5ms | Allocations: 48238)
+
+
