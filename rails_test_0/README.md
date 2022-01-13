@@ -20,6 +20,7 @@ Things you may want to cover:
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
-ruby -b [ipaddr] for virtual box VM hosting
+rails server -b [ipaddr] for virtual box VM hosting
+connect from host to 127.0.0.1:3000/cars
 
 * ...

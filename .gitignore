@@ -1,3 +1,6 @@
 node_modules/
 rails_test_0/tmp
+rails_test_0/log
+rails_test_0/db/*.sqlite3
+
 
