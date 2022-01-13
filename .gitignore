@@ -1,6 +1,11 @@
 node_modules/
-rails_test_0/tmp
-rails_test_0/log
-rails_test_0/db/*.sqlite3
+
+#Ignore tmp, db, and log files
+rails_test_0/tmp/
+*.sqlite3
+**/log
+*.log
+
+
 
 
