@@ -19,8 +19,21 @@ Things you may want to cover:
 
 * Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+* Deployment instructions:
+
 rails server -b [ipaddr] for virtual box VM hosting
+
 connect from host to 127.0.0.1:3000/cars
 
-* ...
+
+* Docker notes: 
+
+(generate Dockerfile) (TODO: starting layer? define?)
+
+build image with "docker build -t image_name"
+
+"docker run -dp 3000:3000 image_name"
+
+___________________________________________
+
+

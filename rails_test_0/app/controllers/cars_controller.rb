@@ -3,6 +3,7 @@ class CarsController < ApplicationController
 
   # GET /cars or /cars.json
   def index
+    #Collects into instance var @cars for index.html.erb to use
     @cars = Car.all
   end
 
