@@ -2,14 +2,22 @@ Database defined in persistence/sqlite.js, make sql functions used in addItem.js
 
 P6: Bind Mounts
 //Run this from inside stunning_tribble/docker_nodejs_test_0/app via wsl
-docker run -dp 3000:3000      -w /app -v "$(pwd):/app"      node:12-alpine      sh -c "yarn install && yarn run dev"
+docker run -dp 3000:3000 \
+-w /app -v "$(pwd):/app" \
+node:12-alpine \
+sh -c "yarn install && yarn run dev"
 
 P7: suggests moving db to another container
 
 docker network create stunning-tribble //Create network
 
 //start mysql container
-docker run -d --network stunning-tribble --network-alias mysql -v mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_DATABASE=todos mysql:5.7
+docker run -d --network stunning-tribble \
+ --network-alias mysql \
+ -v mysql-data:/var/lib/mysql \
+ -e MYSQL_ROOT_PASSWORD=secret \
+ -e MYSQL_DATABASE=todos \
+ mysql:5.7
 
 //Instead of docker exec -it <new_container_id> mysql -u root -p, open it's CLI and just access mysql directly
 
@@ -28,3 +36,5 @@ docker run -dp 3000:3000 \
    sh -c "yarn install && yarn run dev"
 
 will put made TODO items in mysql todos.todo_items table
+
+P8: Docker Compose
