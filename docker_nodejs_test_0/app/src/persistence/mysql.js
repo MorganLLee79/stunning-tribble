@@ -41,6 +41,9 @@ async function init() {
                 acc();
             },
         );
+
+        //pool.query( 'CREATE TABLE IF NOT EXISTS recipes (recipe_id varchar(36), recipe_name varchar(255), quantity INT )
+        //pool.query( 'CREATE TABLE IF NOT EXISTS items (item_id varchar(36), item_name varchar(255))')
     });
 }
 

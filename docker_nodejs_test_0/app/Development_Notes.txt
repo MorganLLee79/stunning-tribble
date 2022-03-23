@@ -4,12 +4,19 @@ Next things to develop, TODO:
     --Update DB to support crafting recipes?--
 -inputs / outputs: requires new schema
   -Learn mysql
-  -Update schema accordingly
+    -Relational only, not object-relational (pgsql)
+    -https://www.mysqltutorial.org/mysql-nodejs/
+  -Update schema accordingly. Review db
+    -Recipes: Recipe ID, recipe Name, source game, item ID used, quantity (in/out=pos/neg)
+    -Items table: Crafting ID? Or input type ID?, required item type
+    *-Expansion?: renewable? limit number crafting recipe uses?
+
 -Update UI to access new schema
   -Requires updating routes, persistence folder
   -Update spec as well
 
     --Crafting calculating--
+
 -How do look at mysql entries, compare? Corresponding UI to interact?
 -Fill in defined calculations, show ratios
   -Start with 2 items, expand number of inputs/layers of crafting
