@@ -37,4 +37,7 @@ docker run -dp 3000:3000 \
 
 will put made TODO items in mysql todos.todo_items table
 
-P8: Docker Compose
+P8: Docker Compose (https://docs.docker.com/get-started/08_using_compose/)
+Start up using (in /app/):
+docker-compose up -d
+docker-compose down

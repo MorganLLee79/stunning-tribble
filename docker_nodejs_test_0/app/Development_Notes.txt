@@ -7,7 +7,7 @@ Next things to develop, TODO:
     -Relational only, not object-relational (pgsql)
     -https://www.mysqltutorial.org/mysql-nodejs/
   -Update schema accordingly. Review db
-    -Recipes: Recipe ID, recipe Name, source game, item ID used, quantity (in/out=pos/neg)
+    -Recipes: Recipe ID, recipe NamNext:e, source game, item ID used, quantity (in/out=pos/neg)
     -Items table: Crafting ID? Or input type ID?, required item type
     *-Expansion?: renewable? limit number crafting recipe uses? Other requirements like skill level?
         -Table listing source games + desc?
