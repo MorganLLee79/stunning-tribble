@@ -42,8 +42,14 @@ async function init() {
             },
         );
 
-        //pool.query( 'CREATE TABLE IF NOT EXISTS recipes (recipe_id varchar(36), recipe_name varchar(255), quantity INT )
-        //pool.query( 'CREATE TABLE IF NOT EXISTS items (item_id varchar(36), item_name varchar(255))')
+        pool.query(
+            'CREATE TABLE IF NOT EXISTS recipes ' +
+            '(recipe_id INT, recipe_name varchar(255), source_game varchar(255), quantity DECIMAL )'
+        );
+        pool.query(
+            'CREATE TABLE IF NOT EXISTS items ' +
+            '(item_id INT, item_name varchar(255))'
+        );
     });
 }
 

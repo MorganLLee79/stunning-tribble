@@ -9,11 +9,13 @@ Next things to develop, TODO:
   -Update schema accordingly. Review db
     -Recipes: Recipe ID, recipe Name, source game, item ID used, quantity (in/out=pos/neg)
     -Items table: Crafting ID? Or input type ID?, required item type
-    *-Expansion?: renewable? limit number crafting recipe uses?
+    *-Expansion?: renewable? limit number crafting recipe uses? Other requirements like skill level?
+        -Table listing source games + desc?
 
 -Update UI to access new schema
   -Requires updating routes, persistence folder
   -Update spec as well
+
 
     --Crafting calculating--
 
@@ -21,6 +23,7 @@ Next things to develop, TODO:
 -Fill in defined calculations, show ratios
   -Start with 2 items, expand number of inputs/layers of crafting
   -Later, fill in middle layers, given just output wanted? (Input?)
+  -Eventually: account for one time use things, if not available? Parallelizable?
 -Auto-calculate optimal source of given item?
 
     --Crafting pipeline display?--
