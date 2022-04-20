@@ -92,6 +92,12 @@ function AddItemForm({ onNewItem }) {
     return (
         <Form onSubmit={submitNewItem}>
             <InputGroup className="mb-3">
+                //https://react-bootstrap.github.io/forms/form-control/
+                <Form.Group className="mb-3" /*controlId="exampleForm.ControlInput1"*/>
+                    <Form.Label>Item Name</Form.Label>
+                    <Form.Control type="email" placeholder="name@example.com" />
+                </Form.Group>
+                //
                 <Form.Control
                     value={newItem}
                     onChange={e => setNewItem(e.target.value)}
@@ -99,6 +105,7 @@ function AddItemForm({ onNewItem }) {
                     placeholder="New Item"
                     aria-describedby="basic-addon1"
                 />
+                //Add extra fields here?
                 <InputGroup.Append>
                     <Button
                         type="submit"
