@@ -94,8 +94,11 @@ function AddItemForm({ onNewItem }) {
             <InputGroup className="mb-3">
                 //https://react-bootstrap.github.io/forms/form-control/
                 <Form.Group className="mb-3" /*controlId="exampleForm.ControlInput1"*/>
-                    <Form.Label>Item Name</Form.Label>
-                    <Form.Control type="email" placeholder="name@example.com" />
+                    <Form.Label>Item Info</Form.Label>
+                    <Form.Control type="item_name" placeholder="item_name" />
+                    <Form.Control type="item_source" placeholder="source_game" />
+                    //recipe add in another form group?
+                    //<Form.Control type="item_quantity" placeholder="#items" />
                 </Form.Group>
                 //
                 <Form.Control
