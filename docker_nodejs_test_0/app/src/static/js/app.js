@@ -52,6 +52,14 @@ function TodoListCard() {
     return (
         <React.Fragment>
             <AddItemForm onNewItem={onNewItem} />
+            <div > Saved Todo Items: </div>
+            <p> TEST </p>
+            {/*
+                - or <label _>... ?
+                - Also TODO: Add styling
+                    ^- https://www.digitalocean.com/community/tutorials/how-to-style-react-components
+            */}
+
             {items.length === 0 && (
                 <p className="text-center">You have no TODO items yet! Add one above!</p>
             )}
@@ -91,16 +99,27 @@ function AddItemForm({ onNewItem }) {
 
     return (
         <Form onSubmit={submitNewItem}>
+        <Form.Label>Add Recipe Info</Form.Label>
             <InputGroup className="mb-3">
-                //https://react-bootstrap.github.io/forms/form-control/
-                <Form.Group className="mb-3" /*controlId="exampleForm.ControlInput1"*/>
-                    <Form.Label>Item Info</Form.Label>
-                    <Form.Control type="item_name" placeholder="item_name" />
-                    <Form.Control type="item_source" placeholder="source_game" />
-                    //recipe add in another form group?
-                    //<Form.Control type="item_quantity" placeholder="#items" />
-                </Form.Group>
-                //
+
+                    {/* https://react-bootstrap.github.io/forms/form-control/
+                        https://react-bootstrap.github.io/forms/input-group/
+                    */}
+                    <Form.Control type="recipe_name" placeholder="Recipe Name" />
+                    <Form.Control type="recipe_source" placeholder="Source Game" />
+                    <InputGroup.Text id="recipe_add">Add Recipe</InputGroup.Text>
+
+            </InputGroup>
+            <InputGroup className="mb-3">
+                    <Form.Control type="recipe_input" placeholder="Input Item" />
+                    <Form.Control type="recipe_input_qty" placeholder="Input Qty" />
+            </InputGroup>
+            <InputGroup.Text id="add_input"> TODO: new row for another input item type </InputGroup.Text>
+
+
+
+
+            <InputGroup className="mb-3">
                 <Form.Control
                     value={newItem}
                     onChange={e => setNewItem(e.target.value)}
@@ -108,7 +127,6 @@ function AddItemForm({ onNewItem }) {
                     placeholder="New Item"
                     aria-describedby="basic-addon1"
                 />
-                //Add extra fields here?
                 <InputGroup.Append>
                     <Button
                         type="submit"

@@ -1,5 +1,6 @@
 Next things to develop, TODO:
 
+--React testing framework, testing by components, etc?
 
     --Update DB to support crafting recipes?--
 -inputs / outputs: requires new schema
