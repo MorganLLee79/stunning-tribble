@@ -17,7 +17,7 @@
 
   "content_scripts": [
     {
-      "matches": ["*://*.mozilla.org/*"],
+      "matches": ["*://*.reddit.com/r/WritingPrompts/*"],
       "js": ["apply_br.js"]
     }],
 
