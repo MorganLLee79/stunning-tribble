@@ -1,0 +1,12 @@
+
+
+https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension
+https://github.com/mdn/webextensions-examples/tree/master/borderify
+
+https://bionic-reading.com/ but firefox extension
+-Essentially make first few letters ea word bold
+
+
+-Settings in manifest.json
+    -content_scripts: run script on website
+    -about:debugging#/runtime/this-firefox to temp load, select manifest.json

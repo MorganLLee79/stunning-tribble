@@ -1,0 +1,28 @@
+{
+
+  "manifest_version": 2,
+  "name": "br_extension",
+  "version": "1.0",
+
+  "description": "Bionic Reading but Firefox.",
+
+  "icons": {
+    "48": "icons/border-48.png"
+  },
+
+  "permissions" : [
+      "activeTab",
+      "contextMenus"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.mozilla.org/*"],
+      "js": ["apply_br.js"]
+    }],
+
+  "background": {
+      "scripts": ["background.js"]
+  }
+
+}
