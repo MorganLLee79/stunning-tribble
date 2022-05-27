@@ -21,6 +21,7 @@ document.body.appendChild(p);
 function applyBrToWord(wordHTML) {
     //Add length handling later
     wordHTML = "<b>" + word + "</b>";
+    //Avoid punctuation, start at first letter, bound by max size of word/letters count
     return wordHTML;
 }
 
@@ -76,24 +77,27 @@ Take a look athow this textis interpreted
 
     //Get nodes' innerHTML for updating
     let children = comment.childNodes;
-    for(let j=0; j<comment.childNodes.length;i++){
+    for(let j=0; j<comment.childNodes.length;j++){
         //Consider swapping to recursive function b/c child nodes?
 
         let innerHTMLText = comment.childNodes[j].innerHTML;
 
         //console.log(typeof elements[i].innerHTML);
-        if(typeof innerHTML = 'string') {
+        if(typeof innerHTMLText = 'string') {
         	console.log(innerHTMLText.split(" "));
 
             let splitVals = innerHTMLText.split(" ");
             let result = ""; //Assuming not referentially connected still
             //find all spaces, if it's displayed text then add <b></b>
+            //Go through all words
             for (let k=0; k<splitVals.length; k++) {
                 let currentWord = splitVals[k];
-                result += "<b>" + currentWord + "</b>";
-                //result += applyBrToWord(currentWord)
+                //result += "<b>" + currentWord + "</b>";
+                result += applyBrToWord(currentWord)
                 //Avoid putting in <div>? How? if prev+next != "<" + ... + ">"?
             }
+
+            comment.childNodes[j].innerHTML = result;
         }
     }
     //Split w/ js string functions
@@ -111,7 +115,7 @@ Take a look athow this textis interpreted
 
 <h2>JavaScript HTMLDOM</h2>
 <p id="bodyText">
-<div class="userText"><div class="md">Displaying document.bodytestsete</div><p>zxcasd</p><div class="md">AB<b>FDD</b>SCCS</div></div>
+<div class="userText"><div class="md">Displaying document bodytestsete</div><p>zxcasd</p><div class="md">AB<p>FDD</p>SCCS</div></div>
 </p>
 
 <p id="demo"></p>
@@ -125,9 +129,10 @@ let result = "AAAA";//"M<p>[0]" + spaceSplit[0] + "[0]<b>[1]" + spaceSplit[1] + 
 
 console.log("TEST");
 console.log(elements);
+//nsole.log(element[0].childNodes[1]);
 for(let i=0; i<elements.length;i++){
-	console.log(typeof elements[i].innerHTML);
-	console.log(elements[i].innerHTML);
+	//console.log(typeof elements[i].innerHTML);
+	console.log(elements[i].innerHTML.split(" "));
 }
 //console.log("-" + element.textContent);
 console.log("TEST");
@@ -137,6 +142,7 @@ document.getElementById("demo").innerHTML = result;
 
 </body>
 </html>
+
 */
 
 /*
