@@ -17,13 +17,70 @@ document.body.appendChild(p);
 // const name = "<img src='x' onerror='alert(1)'>";
 // el.innerHTML = name; // shows the alert
 
-//
-function applyBrToWord(wordHTML) {
-    //Add length handling later
-    wordHTML = "<b>" + word + "</b>";
-    //Avoid punctuation, start at first letter, bound by max size of word/letters count
-    return wordHTML;
+//param: Take in HTML string
+function applyBrToWord(innerHTML) {
+
+  let words = innerHTML.split(" ");
+  let result = ""; //Assuming not referentially connected still
+
+  //find all spaces, if it's displayed text then add <b></b>
+  //Go through all words
+  let inTag = 0; //Track layers of tag currentWord involves
+  const focus = 3;
+  for (let i=0; i<words.length; i++) {
+      let currentWord = words[i];
+
+      //Confirm it's not formatting html?
+      if(currentWord.includes("<")) {
+        //Move forward to after tag is closed
+        inTag += (currentWord.match(/</g || []).length;
+      }
+      if(currentWord.includes(">")) {
+        inTag -= (currentWord.match(/>/g || []).length;
+      }
+
+      if(inTag == 0) {
+        if(currentWord.length > focus) {
+          currentWord = "<b>" + currentWord.substring(0, focus) +
+                        "</b>" + currentWord.substring(focus);
+        } else {
+          currentWrod = "<b>" + currentWord + "</b>";
+        }
+      }
+
+      result += currentWord + " ";
+  }
+
+  //Add length handling later
+  wordHTML = "<b>" + word + "</b>";
+  //Avoid punctuation, start at first letter, bound by max size of word/letters count
+  return wordHTML;
 }
+//Edit HTML, use regex to account for tags?
+//https://stackoverflow.com/questions/56743154/using-javascript-to-format-an-html-string-to-display-properly
+
+
+function applyBrToElementChildren(activeElement) {
+  let nodeList = activeElement.children; //returns elements
+  let text = "";
+  for (let i = 0; i < nodeList.length; i++) {
+    let currentElement = nodeList[i];
+
+    //If it's a valid text segment ?? != script?
+    if(currentElement.nodeName == "P") {
+      text += nodeList[i].textContent + nodeList[i].children.length + "<br>";
+
+      //If further child nodes, recurse down
+      if(nodeList[i].children.length > 0) {
+      	text += nodeList[i].children[0].textContent + nodeList[i].children.length + "<br>";
+        applyBrToElementChildren(nodeList[i]);
+      }
+    }
+  }
+  document.getElementById("demo").innerHTML = text;
+
+}
+
 
 //HTMLCollection (array) of comments
 let comments = document.getElementsByClassName("usertext-body");
@@ -86,16 +143,7 @@ Take a look athow this textis interpreted
         if(typeof innerHTMLText = 'string') {
         	console.log(innerHTMLText.split(" "));
 
-            let splitVals = innerHTMLText.split(" ");
-            let result = ""; //Assuming not referentially connected still
-            //find all spaces, if it's displayed text then add <b></b>
-            //Go through all words
-            for (let k=0; k<splitVals.length; k++) {
-                let currentWord = splitVals[k];
-                //result += "<b>" + currentWord + "</b>";
-                result += applyBrToWord(currentWord)
-                //Avoid putting in <div>? How? if prev+next != "<" + ... + ">"?
-            }
+            innerHTML = applyBrToWord(innerHTML);
 
             comment.childNodes[j].innerHTML = result;
         }
