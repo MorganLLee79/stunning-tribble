@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<body style="background-color:DarkSlateGray;color:LightGray" onload="test();">
+
+<h2>JavaScript HTMLDOM</h2>
+<div class="userText">
+    <div class="md">
+        Displaying document bodytestsete
+    </div>
+    <p>
+        zxcasd
+    </p>
+    <div class="md">
+        AB
+        <p>
+            FDDD
+        </p>
+        SCCS
+    </div>
+</div>
+
+----------------
+<div id="demo">
+INITIAL_DEMO_TEXT
+</div>
+----------------
+
+<script>
+function test(){
+    let elements= document.getElementsByClassName("userText")[0].childNodes;
+    let element = elements[1];
+    let innerHTMLtext = element.innerHTML;
+    //let spaceSplit = innerHTMLtext.split(" ");
+    let result = "AAAA";//"M<p>[0]" + spaceSplit[0] + "[0]<b>[1]" + spaceSplit[1] + "[1]</b></p>M";
+
+    /*
+    console.log("TEST");
+    console.log(elements);
+    //nsole.log(element[0].childNodes[1]);
+    for(let i=0; i<elements.length;i++){
+    	//console.log(typeof elements[i].innerHTML);
+    	console.log(elements[i].innerHTML.split(" "));
+    }
+    //console.log("-" + element.textContent);
+    console.log("TEST");*/
+
+    let demo = document.getElementById("demo");
+    demo.innerHTML = result;
+}
+</script>
+<!--script src="myscripts.js"></script>-->
+end of document
+</body>
+</html>
