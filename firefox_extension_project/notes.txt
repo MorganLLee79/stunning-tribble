@@ -10,3 +10,6 @@ https://bionic-reading.com/ but firefox extension
 -Settings in manifest.json
     -content_scripts: run script on website
     -about:debugging#/runtime/this-firefox to temp load, select manifest.json
+
+-<p> don't nest? any other tag types can expect in final divs?
+    -Would need to account for probably

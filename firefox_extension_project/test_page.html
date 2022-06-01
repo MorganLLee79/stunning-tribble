@@ -5,18 +5,13 @@
 <h2>JavaScript HTMLDOM</h2>
 <div class="userText">
     <div class="md">
-        Displaying document bodytestsete
+        Displaying document body
+        test
     </div>
     <p>
-        zxcasd
+        oneoneone
     </p>
-    <div class="md">
-        AB
-        <p>
-            FDDD
-        </p>
-        SCCS
-    </div>
+    <div class="md">twotwo three<b style="color:red"> four five</b><p>six seven eight</p></div>
 </div>
 
 ----------------
@@ -25,14 +20,38 @@ INITIAL_DEMO_TEXT
 </div>
 ----------------
 
+<script src="apply_br.js"></script>
 <script>
+//import { TESTTEST } from './apply_br.js';
+var demo = document.getElementById("demo");
+//demo.innerText = TESTTEST();
+demo.innerText = fn1();
+demo.innerText += fn3();
+demo.innerText += "TTTTTESTTTTTTT";
+function fn1() {
+    let result = "TEST";
+    return "TEST";
+}
 function test(){
-    let elements= document.getElementsByClassName("userText")[0].childNodes;
-    let element = elements[1];
-    let innerHTMLtext = element.innerHTML;
+    return;
+    //import { TESTTEST } from './apply_br.js';
+    let userTextParents = document.getElementsByClassName("userText");
+    let elements = userTextParents[0].children; //First instance
+    var element = elements[2];
+    //let innerHTMLtext = element.innerText;
     //let spaceSplit = innerHTMLtext.split(" ");
     let result = "AAAA";//"M<p>[0]" + spaceSplit[0] + "[0]<b>[1]" + spaceSplit[1] + "[1]</b></p>M";
-
+    //let regexSplit = /<|>| /; //'<'. '>', or ' '
+    let regexSplit = /<\/.>|<.>/;
+    /*let regexClose = /<\/.>/;
+    let regexOpen = /<.>/;
+    // .split() twice, once for </p> and once for <p>?*/
+    //Don't have to worry about </p> because that'll be at the end
+    result = element.innerHTML.split(" ").toString();
+    //Alt, track a bunch of indices to insert <b></b>into?
+    //Wait but what if there are italics/bolds inside?
+    result += "\n" + [...element.children];
+    result += "\n" + element.children[0].innerText
     /*
     console.log("TEST");
     console.log(elements);
@@ -43,12 +62,15 @@ function test(){
     }
     //console.log("-" + element.textContent);
     console.log("TEST");*/
-
-    let demo = document.getElementById("demo");
-    demo.innerHTML = result;
+    //alert("TEST")
+    var demo = document.getElementById("demo");
+    demo.innerText = result + userTextParents[0];
+    //demo.innerText = applyBrToElementChildren(userTextParents[0]);
+    //demo.innerText = TESTTEST();
+    //demo.innerText = "TEST"
+    return result;
 }
 </script>
-<!--script src="myscripts.js"></script>-->
 end of document
 </body>
 </html>
