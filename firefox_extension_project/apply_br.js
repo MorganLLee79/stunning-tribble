@@ -32,13 +32,13 @@ function applyBrToWord(innerHTML) {
       let currentWord = words[i];
 
       //Confirm it's not formatting html?
-      if(currentWord.includes("<")) {
+      /*if(currentWord.includes("<")) {
         //Move forward to after tag is closed
         inTag += (currentWord.match(/</g || []).length;
       }
       if(currentWord.includes(">")) {
         inTag -= (currentWord.match(/>/g || []).length;
-      }
+    }*/
 
       if(inTag == 0) {
         if(currentWord.length > focus) {
@@ -56,14 +56,14 @@ function applyBrToWord(innerHTML) {
   wordHTML = "<b>" + word + "</b>";
   //Avoid punctuation, start at first letter, bound by max size of word/letters count
   return wordHTML;
-}
+};
 //Edit HTML, use regex to account for tags?
 //https://stackoverflow.com/questions/56743154/using-javascript-to-format-an-html-string-to-display-properly
 
-export function fn3(){
-    //alert("TESTTEST");
+function fn3() {
+    alert("TESTTEST");
     return "fn3";
-}
+};
 
 function applyBrToElementChildren(activeElement) {
     alert("TEST");
@@ -87,4 +87,4 @@ function applyBrToElementChildren(activeElement) {
   }
   //document.getElementById("demo").innerHTML = text;*/
   return text;
-}
+};

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<body style="background-color:DarkSlateGray;color:LightGray" onload="test();">
+<body style="background-color:DarkSlateGray;color:LightGray">
 
 <h2>JavaScript HTMLDOM</h2>
 <div class="userText">
@@ -21,17 +21,18 @@ INITIAL_DEMO_TEXT
 ----------------
 
 <script src="apply_br.js"></script>
+<script src="test.js"></script>
 <script>
 //import { TESTTEST } from './apply_br.js';
 var demo = document.getElementById("demo");
 //demo.innerText = TESTTEST();
-demo.innerText = fn1();
+demo.innerText += fn1();
 demo.innerText += fn3();
 demo.innerText += "TTTTTESTTTTTTT";
 function fn1() {
     let result = "TEST";
     return "TEST";
-}
+};
 function test(){
     return;
     //import { TESTTEST } from './apply_br.js';
@@ -69,7 +70,9 @@ function test(){
     //demo.innerText = TESTTEST();
     //demo.innerText = "TEST"
     return result;
-}
+};
+
+test();
 </script>
 end of document
 </body>
