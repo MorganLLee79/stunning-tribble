@@ -21,13 +21,12 @@ INITIAL_DEMO_TEXT
 ----------------
 
 <script src="apply_br.js"></script>
-<script src="test.js"></script>
 <script>
 //import { TESTTEST } from './apply_br.js';
 var demo = document.getElementById("demo");
 //demo.innerText = TESTTEST();
 demo.innerText += fn1();
-demo.innerText += fn3();
+demo.innerText += fn3("fn3input");
 demo.innerText += "TTTTTESTTTTTTT";
 function fn1() {
     let result = "TEST";

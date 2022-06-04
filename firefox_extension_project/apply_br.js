@@ -60,9 +60,9 @@ function applyBrToWord(innerHTML) {
 //Edit HTML, use regex to account for tags?
 //https://stackoverflow.com/questions/56743154/using-javascript-to-format-an-html-string-to-display-properly
 
-function fn3() {
-    alert("TESTTEST");
-    return "fn3";
+function fn3(inputString) {
+    //alert("TESTTEST");
+    return "fn3" + inputString;
 };
 
 function applyBrToElementChildren(activeElement) {
