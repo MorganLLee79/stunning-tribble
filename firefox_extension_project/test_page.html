@@ -16,7 +16,8 @@
 
 ----------------
 <div id="demo">
-INITIAL_DEMO_TEXT
+INITIAL_DEMO_TEXT<br>
+
 </div>
 ----------------
 
@@ -25,12 +26,22 @@ INITIAL_DEMO_TEXT
 //import { TESTTEST } from './apply_br.js';
 var demo = document.getElementById("demo");
 //demo.innerText = TESTTEST();
-demo.innerText += fn1();
-demo.innerText += fn3("fn3input");
-demo.innerText += "TTTTTESTTTTTTT";
+demo.innerHTML += "<br>HTML:<br>";
+demo.innerText +=  fn1();
+demo.innerHTML += "<br><br>Displayed:<br>" + fn1();
+//demo.innerText += fn3("fn3input");
+demo.innerHTML += "<br>_TEST_END_";
 function fn1() {
-    let result = "TEST";
-    return "TEST";
+
+    //Go through elements with class="userText"
+    let result = "";
+    let userTextParents = document.getElementsByClassName("userText");
+    for(let i=0; i<userTextParents.length; i++) {
+        let currElements = userTextParents[i].children;
+        result += currElements[2].innerHTML;
+    }
+
+    return result;
 };
 function test(){
     return;
