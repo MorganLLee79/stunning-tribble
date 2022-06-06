@@ -65,15 +65,18 @@ function fn3(inputString) {
     return "fn3" + inputString;
 };
 
-function applyBrToElementChildren(activeElement) {
-    alert("TEST");
-  //let nodeList = activeElement.children; //returns elements
-  let text = activeElement.children.length;
-  /*
+function recursionSurvey(activeElement) {
+  let nodeList = activeElement.children; //returns elements
+  if(activeElement.children.length == 0) {
+      return "0 ";
+  }
+
+  let text = activeElement.children.length + "[";
+
   for (let i = 0; i < nodeList.length; i++) {
     let currentElement = nodeList[i];
-    text += "A";
-
+    text += recursionSurvey(currentElement);
+    /*
     //If it's a valid text segment ?? != script?
     if(currentElement.nodeName == "P") {
       text += nodeList[i].textContent + nodeList[i].children.length + "<br>";
@@ -83,8 +86,35 @@ function applyBrToElementChildren(activeElement) {
       	text += nodeList[i].children[0].textContent + nodeList[i].children.length + "<br>";
         applyBrToElementChildren(nodeList[i]);
       }
-    }
+  }*/
   }
-  //document.getElementById("demo").innerHTML = text;*/
-  return text;
+  //document.getElementById("demo").innerHTML = text;
+  return text + "] ";
+};
+
+function applyBrToElementChildren(activeElement) {
+  let nodeList = activeElement.children; //returns elements
+  if(activeElement.children.length == 0) {
+      return "|";
+  }
+
+  let text = " [" + activeElement.children.length;
+
+  for (let i = 0; i < nodeList.length; i++) {
+    let currentElement = nodeList[i];
+    text += applyBrToElementChildren(currentElement);
+    /*
+    //If it's a valid text segment ?? != script?
+    if(currentElement.nodeName == "P") {
+      text += nodeList[i].textContent + nodeList[i].children.length + "<br>";
+
+      //If further child nodes, recurse down
+      if(nodeList[i].children.length > 0) {
+      	text += nodeList[i].children[0].textContent + nodeList[i].children.length + "<br>";
+        applyBrToElementChildren(nodeList[i]);
+      }
+  }*/
+  }
+  //document.getElementById("demo").innerHTML = text;
+  return text + "] ";
 };

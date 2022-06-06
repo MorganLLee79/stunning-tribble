@@ -28,10 +28,13 @@ var demo = document.getElementById("demo");
 //demo.innerText = TESTTEST();
 demo.innerHTML += "<br>HTML:<br>";
 demo.innerText +=  fn1();
-demo.innerHTML += "<br><br>Displayed:<br>" + fn1();
+demo.innerText +=  fn1();
+let userText = document.getElementsByClassName("userText")[0];
+demo.innerHTML += "<br><br>Displayed:<br>" + recursionSurvey(userText);
 //demo.innerText += fn3("fn3input");
 demo.innerHTML += "<br>_TEST_END_";
 function fn1() {
+    let childNodesFound = "";
 
     //Go through elements with class="userText"
     let result = "";
@@ -41,7 +44,7 @@ function fn1() {
         result += currElements[2].innerHTML;
     }
 
-    return result;
+    return result + childNodesFound;
 };
 function test(){
     return;
